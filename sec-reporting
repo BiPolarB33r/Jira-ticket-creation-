@@ -1,0 +1,117 @@
+import pyautogui
+import time
+pyautogui.PAUSE = 0.5
+
+# dynamic excel locations about 70 px apart.
+Instance = 103,866
+Name = 329,867
+Expected = 1150,867
+Descrip = 797,869
+
+
+def Sec_Reporting():
+    pyautogui.leftClick(709, 1061)  # chrome taskbar
+    pyautogui.leftClick(703, 128)  # jira create
+    pyautogui.leftClick(1004, 1061)  # Word taskbar
+    pyautogui.moveTo(637, 458)  # word copy des start
+    pyautogui.mouseDown(button='left')
+    pyautogui.moveTo(762, 641)  # word copy des end
+    pyautogui.mouseUp(button='left')
+    pyautogui.hotkey("ctrl", "c")
+    pyautogui.leftClick(706, 1063,)  # chrome taskbar
+    pyautogui.moveTo(735, 553)  # Jira ticket des box
+    pyautogui.mouseDown(button='left')
+    pyautogui.mouseUp(button='left')
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.hotkey('ctrl', 'v')
+    
+    pyautogui.leftClick(687, 729)  # Jira severity button
+    pyautogui.leftClick(654, 787)  # Jira "High" severity
+    pyautogui.scroll(-260)
+    pyautogui.leftClick(776, 722)  # Jira assignee location
+    pyautogui.typewrite('P')
+    time.sleep(1)
+    pyautogui.typewrite('e')
+    time.sleep(1)
+    pyautogui.press('enter')
+    pyautogui.scroll(260)
+    pyautogui.leftClick(717, 805)  # Jira complexity location
+    pyautogui.typewrite('1')
+    
+    pyautogui.leftClick(1004, 1061)  # Word taskbar
+    pyautogui.moveTo(635, 281)  # Word 'environment' start
+    pyautogui.mouseDown(button='left')
+    pyautogui.moveTo(803, 376)  # Word 'environment' end
+    pyautogui.mouseUp(button='left')
+    pyautogui.hotkey('ctrl', 'c')
+    pyautogui.leftClick(709, 1061)  # Chrome taskbar
+    pyautogui.leftClick(639, 647)  # Jira 'environment'
+    pyautogui.hotkey('ctrl', 'v')
+
+    pyautogui.leftClick(1052, 1063)  # Excel taskbar
+    pyautogui.moveTo(Instance)  # Excel instance ID
+    pyautogui.doubleClick(button='left')
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.hotkey('ctrl', 'c')
+    pyautogui.leftClick(709, 1061)  # Chrome taskbar
+    pyautogui.leftClick(711, 583)  # Jira 'instance ID' location
+    pyautogui.hotkey('ctrl', 'v')
+
+    pyautogui.leftClick(1052, 1063)  # Excel taskbar
+    pyautogui.moveTo(Name)  # Excel Instance name location
+    pyautogui.doubleClick(button='left')
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.hotkey('ctrl', 'c')
+    pyautogui.leftClick(709, 1061)  # Chrome taskbar
+    pyautogui.leftClick(728, 604)  # Jira instance name location in descrip
+    pyautogui.hotkey('ctrl', 'v')
+    pyautogui.leftClick(747, 409)  # Jira summary location
+    pyautogui.hotkey('ctrl', 'v')
+
+    pyautogui.leftClick(1052, 1063)  # Excel taskbar
+    pyautogui.moveTo(Expected)  # Excel expected location
+    pyautogui.doubleClick(button='left')
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.hotkey('ctrl', 'c')
+    pyautogui.leftClick(709, 1061)  # Chrome taskbar
+    pyautogui.leftClick(676, 534)  # Jira Expected location in descrip
+    pyautogui.hotkey('ctrl', 'v')
+    pyautogui.scroll(200)
+
+    pyautogui.leftClick(1052, 1063)  # Excel taskbar
+    pyautogui.moveTo(Descrip)  # Excel description location
+    pyautogui.doubleClick(button='left')
+    pyautogui.hotkey('ctrl', 'a')
+    pyautogui.hotkey('ctrl', 'c')
+    pyautogui.leftClick(709, 1061)  # Chrome taskbar
+    pyautogui.leftClick(688, 516)  # Jira description location
+    pyautogui.hotkey('ctrl', 'v')
+
+    pyautogui.leftClick(1052, 1063)  # Excel tab
+    pyautogui.moveTo(Instance)  # Excel instance ID location
+    pyautogui.mouseDown(button='left')
+    pyautogui.moveTo(Expected)  # Excel expected location
+    pyautogui.mouseUp(button='left')
+    pyautogui.leftClick(1221, 88)  # Excel "GOOD" highlight
+
+num = 0
+while num < 3:
+    Sec_Reporting()
+    pyautogui.moveRel(Instance, Instance + 70)
+    pyautogui.moveRel(Name + 70, Name + 70)
+    pyautogui.moveRel(Expected + 70, Expected + 70)
+    pyautogui.moveRel(Descrip + 70, Descrip + 70)
+    Sec_Reporting()
+    num += 1
+
+
+
+
+
+
+
+
+
+
+
+
